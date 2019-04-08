@@ -33,7 +33,6 @@ function start() {
         }
       ])
       .then(answer => {
-        console.log(answer);
         checkQuantity(answer);
       });
   });
@@ -57,7 +56,6 @@ function showItems() {
 
 function checkQuantity(res) {
   var itemID = res.choice;
-  console.log(itemID);
   var requestedQuantity = parseInt(res.quantity);
 
   connection.query(
@@ -66,8 +64,6 @@ function checkQuantity(res) {
       if (err) throw err;
       var currentStock = res[0].stock_quantity;
       var price = res[0].price;
-      console.log(`current stock is ${currentStock}`);
-      console.log(`requested quantity is ${requestedQuantity}`);
       if (requestedQuantity > currentStock) {
         console.log("Insufficient Inventory!");
         start();
