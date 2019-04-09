@@ -14,7 +14,7 @@ If you choose to buy more than they have in inventory, you get the below
 Bamazon Manager walkthrough
 
 This is the list that the manager can pick through
-![Manager 1]("./images/customer 1.PNG")
+![Manager 1](./images/customer 1.PNG)
 
 This is option 1
 ![Manager 2](./images/manager 2.PNG)
