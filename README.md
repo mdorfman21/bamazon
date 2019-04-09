@@ -3,7 +3,7 @@
 Bamazon Customer walkthrough
 
 This shows you the products that are for sale
-![Customer 1](./images/customer 1.PNG)
+![Customer1](./images/customer1.PNG)
 
 After you pick the ID and how much you want, it tells you the cost and reduces the inventory
 ![Customer 2](./images/customer 2.PNG)
