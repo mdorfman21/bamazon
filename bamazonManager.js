@@ -103,17 +103,18 @@ function addInventory() {
     .then(ans => {
       let selectedItem = ans.productID;
       let increaseQuantity = parseInt(ans.quantityChange);
-      //   connection.query(
-      //     `SELECT * FROM products WHERE item_id="${selectedItem}"`,
-      //     (err, res) => {
-      //       if (err) throw err;
-      //       let currentQuantity = res.stock_quantity;
-      //       console.log(currentQuantity);
-      //       return currentQuantity;
-      //     }
-      //   );
+      let currentQuantity;
+      connection.query(
+        `SELECT * FROM products WHERE item_id="${selectedItem}"`,
+        (err, res) => {
+          if (err) throw err;
+          currentQuantity = res.stock_quantity;
+          currentQuantity += increaseQuantity;
+          // increaseStock(currentQuantity, selectedItem);
+        }
+      );
 
-      console.log(selectedItem, increaseQuantity);
+      //wrap this in a funtion and pass it currentQuantity
       connection.query(
         `UPDATE products SET ? WHERE ?`,
         [
@@ -177,4 +178,24 @@ function newProduct() {
         }
       );
     });
+}
+
+function increaseStock(currentQty, selectedItem) {
+  connection.query(
+    `UPDATE products SET ? WHERE ?`,
+    [
+      {
+        stock_quantity: currentQty
+      },
+      {
+        item_id: selectedItem
+      }
+    ],
+
+    err => {
+      if (err) throw err;
+      console.log("stock quantity increased");
+    }
+  );
+  start();
 }
